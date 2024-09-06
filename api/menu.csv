@@ -1,0 +1,10 @@
+menu,route,order,icon,sysAdmin,columns
+Edición,list/edicion,1,menu_book,0,
+Categorias,list/categorias,2,dataset,0,
+Páginas,list/paginas,3,newspaper,0,30-70
+Secciones,list/secciones,4,book,0,
+Revista,list/revista,5,table_chart,0,
+Publicidad,list/publicidad,6,format_shapes,0,
+Distribución,list/distribucion,7,local_shipping,0,
+Galeria,gallery,8,photo_camera,0,
+Tipo de Usuarios,users,9,group,1,
