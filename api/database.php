@@ -45,7 +45,7 @@
 
 class Database
 {
-    private $database_path = 'database.sqlite';
+    private $database_path = 'db.sqlite';
     public $connection;
 
     public function __construct()
