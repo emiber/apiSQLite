@@ -17,10 +17,4 @@ class Database
             die("Database connection error.");
         }
     }
-
-    function getDBName()
-    {
-        // Puedes eliminar esta función si no es necesaria para SQLite
-        return $this->database_path;
-    }
 }

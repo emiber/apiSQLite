@@ -48,9 +48,7 @@ class Item
             $query = "SELECT `COLUMN_NAME`, `IS_NULLABLE`, `DATA_TYPE`, `CHARACTER_MAXIMUM_LENGTH`, `ORDINAL_POSITION`, `COLUMN_TYPE`,
                          IF(`COLUMN_COMMENT` IS NULL OR `COLUMN_COMMENT` = '', `COLUMN_NAME`, `COLUMN_COMMENT`) as COLUMN_COMMENT
                     FROM `information_schema`.`COLUMNS`
-                   WHERE `TABLE_SCHEMA` = '" . $this->database->getDBName() . "'
-                     AND `TABLE_NAME` = '" . $this->table . "'
-                     ";
+                   WHERE `TABLE_SCHEMA` = '" . $this->database->getDBName() . "' AND `TABLE_NAME` = '" . $this->table . "'";
             if ($this->getAllRows()) {
                 $query .= " AND `DATA_TYPE` <> 'text'";
             }
