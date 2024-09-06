@@ -66,10 +66,10 @@ switch ($table) {
         $oObj = new User($id);
         break;
     case  "schema":
-        $oObj = new Schema('_schema.csv');
+        $oObj = new Schema('schema.csv');
         break;
     case  "menu":
-        $oObj = new Menu('_menu.csv');
+        $oObj = new Menu('menu.csv');
         break;
     default:
         $responseCode = 400;
