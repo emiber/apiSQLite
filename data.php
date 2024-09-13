@@ -55,7 +55,7 @@ class Data
         $response = false;
         if (!is_null($this->id)) {
             $connection = $this->database->connection;
-            $query = "INSERT INTO `data` (`tableName`, `data`, `sortOrder`, `enabled`) (SELECT `tableName`, `data`, `sortOrder`, 0 FROM `data` WHERE  `id` = $this->id)";
+            $query = "INSERT INTO `data` (`tableName`, `data`, `sortOrder`, `enabled`) SELECT `tableName`, `data`, `sortOrder`, 0 FROM `data` WHERE  `id` = $this->id;";
             $stmt = $connection->prepare($query);
             if ($stmt->execute()) {
                 return $this->getLast();
