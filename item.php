@@ -6,6 +6,12 @@ class Item
     private $httpResponseCode;
     private $rows;
     private $columns;
+    private $database;
+    private $table;
+    private $id;
+    private $body;
+    private $requesterUser;
+    private $databaseName;
 
     function __construct($table, $id, $body, $requesterUser)
     {
@@ -13,6 +19,7 @@ class Item
         $this->table = $table;
         $this->id = $id;
         $this->body = $body;
+        $this->databaseName = $this->database->getDBName();
 
         $this->requesterUser = $requesterUser;
 
@@ -48,7 +55,7 @@ class Item
             $query = "SELECT `COLUMN_NAME`, `IS_NULLABLE`, `DATA_TYPE`, `CHARACTER_MAXIMUM_LENGTH`, `ORDINAL_POSITION`, `COLUMN_TYPE`,
                          IF(`COLUMN_COMMENT` IS NULL OR `COLUMN_COMMENT` = '', `COLUMN_NAME`, `COLUMN_COMMENT`) as COLUMN_COMMENT
                     FROM `information_schema`.`COLUMNS`
-                   WHERE `TABLE_SCHEMA` = '" . $this->database->getDBName() . "' AND `TABLE_NAME` = '" . $this->table . "'";
+                   WHERE `TABLE_SCHEMA` = '$this->databaseName' AND `TABLE_NAME` = '" . $this->table . "'";
             if ($this->getAllRows()) {
                 $query .= " AND `DATA_TYPE` <> 'text'";
             }
@@ -67,7 +74,7 @@ class Item
         $connection = $this->database->connection;
         $executeDefaultStatement = true;
         if ($this->table == 'TABLES') {
-            $query = "SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '" . $this->database->getDBName() . "' AND `TABLE_TYPE` = 'BASE TABLE' ORDER BY `TABLE_NAME` ASC;";
+            $query = "SELECT `TABLE_NAME` FROM `information_schema`.`TABLES` WHERE `TABLE_SCHEMA` = '$this->databaseName' AND `TABLE_TYPE` = 'BASE TABLE' ORDER BY `TABLE_NAME` ASC;";
             $stmt = $connection->prepare($query);
         } else if (($this->table == 'z_users') && !is_numeric($this->id)) {
             $this->id = base64_decode($this->id);

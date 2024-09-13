@@ -3,6 +3,10 @@ include_once 'database.php';
 
 class User
 {
+    private $database;
+    private $sub;
+    private $id;
+
     function __construct()
     {
         $this->database = new Database();
