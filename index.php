@@ -1,10 +1,10 @@
 <?php
-include_once 'helper.php';
-include_once 'data.php';
-include_once 'schema.php';
-include_once 'menu.php';
-include_once 'user.php';
-include_once 'security.php';
+include_once './api/helper.php';
+include_once './api/data.php';
+include_once './api/schema.php';
+include_once './api/menu.php';
+include_once './api/user.php';
+include_once './api/security.php';
 
 ini_set("zlib.output_compression", 4096);
 
