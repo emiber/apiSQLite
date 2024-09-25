@@ -26,6 +26,10 @@ class Data
         $stmt->execute();
         $rows = $this->rowsToArray($stmt);
 
+        if (count($rows) == 0) {
+            return [];
+        }
+
         foreach ($rows as $row) {
             $row = $this->castDataObject($row);
         }
