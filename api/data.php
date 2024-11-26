@@ -105,7 +105,7 @@ class Data
             $enabled    = (int)$body->enabled;
             $data       = $body->data;
 
-            $query = "UPDATE `data` SET `data` = :data,  `sortOrder` = :sortOrder,  `enabled` = :enabled, `UpdateDateTime` = NOW() WHERE `data`.`id` = :id;";
+            $query = "UPDATE `data` SET `data` = :data,  `sortOrder` = :sortOrder,  `enabled` = :enabled, `UpdateDateTime` = CURRENT_TIMESTAMP WHERE `data`.`id` = :id;";
             $stmt = $connection->prepare($query);
             $stmt->bindValue(":data", json_encode($data));
             $stmt->bindValue(":sortOrder", $sortOrder);
