@@ -6,7 +6,9 @@ include_once './api/menu.php';
 include_once './api/user.php';
 include_once './api/security.php';
 
-ini_set("zlib.output_compression", 4096);
+if (strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== false) {
+    ini_set("zlib.output_compression", 4096);
+}
 
 $helper = new Helper();
 // $helper->logRequest();

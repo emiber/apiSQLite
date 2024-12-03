@@ -106,10 +106,11 @@ class User
         $exists = $this->userExists($sub);
 
         if (!$exists) {
-            $query = "SELECT count(1) FROM `users`;";
+            $query = "SELECT count(1) AS countUsers FROM `users`;";
             $stmt = $connection->prepare($query);
+            $stmt->execute();
             $rows = $this->rowsToArray($stmt);
-            $isEnabledAndAdmin = count($rows) == 0;
+            $isEnabledAndAdmin = ($rows[0]->countUsers === 0) ? 1 : 0;
             $query = "INSERT INTO `users` (`sub`, `enabled`, `sysAdmin`, `user`) VALUES ('$sub', $isEnabledAndAdmin, $isEnabledAndAdmin, '$user');";
         } else {
             $enabled = isset($data->enabled) ? (int)$data->enabled : 0;
