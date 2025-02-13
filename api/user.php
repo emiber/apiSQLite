@@ -19,6 +19,8 @@ class User
         if ($sub !== '') {
             $query = $query . " WHERE `sub` = '$sub';";
         }
+        echo $sub;
+        die;
         $stmt = $connection->prepare($query);
         $stmt->execute();
         $rows = $this->rowsToArray($stmt);
@@ -40,6 +42,7 @@ class User
 
     function getPermissions($sub)
     {
+        $this->setFirstSysAdmin();
         $permission = new \stdClass;
 
         if ($sub === '') {
@@ -124,6 +127,21 @@ class User
             return $this->get($sub);
         } else {
             return false;
+        }
+    }
+
+    private function setFirstSysAdmin()
+    {
+        $connection = $this->database->connection;
+        $query = "SELECT count(1) AS countUsers FROM `users`;";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+        $rows = $this->rowsToArray($stmt);
+        $isFirstUser = ($rows[0]->countUsers == 1) ? true : false;
+        if ($isFirstUser) {
+            $query = "UPDATE `users` SET `enabled` = 1, `sysAdmin` = 1;";
+            $stmt = $connection->prepare($query);
+            $stmt->execute();
         }
     }
 
