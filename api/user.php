@@ -19,8 +19,6 @@ class User
         if ($sub !== '') {
             $query = $query . " WHERE `sub` = '$sub';";
         }
-        echo $sub;
-        die;
         $stmt = $connection->prepare($query);
         $stmt->execute();
         $rows = $this->rowsToArray($stmt);
