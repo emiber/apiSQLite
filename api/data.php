@@ -6,11 +6,13 @@ class Data
 {
     private $id;
     private $database;
+    private $sysAdmin;
 
-    function __construct($id)
+    function __construct($id, $sysAdmin = false)
     {
         $this->database = new Database();
         $this->id = $id;
+        $this->sysAdmin = $sysAdmin;
     }
 
     function get()
@@ -19,6 +21,8 @@ class Data
         $query = "SELECT * FROM `data`";
         if ($this->id != "") {
             $query = $query . " WHERE `id` = $this->id";
+        } else if ($this->sysAdmin) {
+            $query = $query . " UNION ALL SELECT `id`, 'usuarios' as `tableName`, `user` as `data`, 0 as sortOrder, enabled, `createDateTime` as `createDateTime`, `createDateTime` as `updateDateTime` FROM `users`";
         }
         $query = $query . " ORDER BY `tableName`, `sortOrder`;";
 

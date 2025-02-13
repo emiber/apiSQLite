@@ -62,7 +62,7 @@ $sysAdmin = $user_->sysAdmin === 1;
 
 switch ($table) {
     case "data":
-        $oObj = new Data($id);
+        $oObj = new Data($id, $sysAdmin);
         break;
     case "users":
         $oObj = new User($id);
