@@ -1,88 +1,38 @@
 ﻿table,column,displayName,isNullable,showInList,dataType,length,position,dafaultValue,relationTable,relationType,link,columnInForm
-logos,id,Id,FALSE,TRUE,int,10,1,,,,,3
-logos,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-logos,file_archivo,Archivo,FALSE,TRUE,file_archivo,,3,,,,,3
-logos,color_main,Color logo,FALSE,TRUE,int,10,4,,colores,one,,3
-logos,color_soporte,Color soporte,FALSE,TRUE,int,10,5,,colores,one,,3
-logos,file_fondo,Imagen fondo,TRUE,TRUE,file_image,,6,,,,,3
-logos,orden,Orden,TRUE,TRUE,int,10,8,,,,,3
-logos,gradiente,Gradiente para el fondo,TRUE,TRUE,varchar,200,7,,,,,3
-logos,brandbook,Brandbook,FALSE,FALSE,int,10,9,,brandbook,one,,3
-colores,id,Id,FALSE,TRUE,int,10,1,,,,,3
-colores,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-colores,hex,Hex,TRUE,TRUE,varchar,200,3,,,,,3
-colores,rgb,RGB,TRUE,TRUE,varchar,200,4,,,,,3
-colores,pantone,Pantone,TRUE,TRUE,varchar,200,5,,,,,3
-colores,cmyk,CMYK,TRUE,TRUE,varchar,200,6,,,,,3
-colores,color_sup,Color para el texto (#hexcode),FALSE,TRUE,varchar,200,7,,,,,3
-colores,bb_col,Jerarquía del color,TRUE,TRUE,int,10,8,,color_jerarquia,one,,3
-colores,orden,Orden,TRUE,TRUE,int,10,9,,,,,3
-colores,brandbook,Brandbook,FALSE,FALSE,int,10,10,,brandbook,one,,3
-color_jerarquia,id,Id,FALSE,TRUE,int,10,1,,,,,3
-color_jerarquia,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-tipografias,id,Id,FALSE,TRUE,int,10,1,,,,,3
-tipografias,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-tipografias,familia,Familia,FALSE,TRUE,varchar,200,3,,,,,3
-tipografias,woff,Archivo Woff,TRUE,TRUE,file_archivo,,4,,,,,3
-tipografias,woff_dos,Archivo Woff2,TRUE,TRUE,file_archivo,,5,,,,,3
-tipografias,weight,Peso (número),TRUE,TRUE,int,3,6,,,,,3
-tipografias,style,Estilo,TRUE,TRUE,int,10,7,,tipografia_styles,one,,3
-tipografias,orden,Orden,TRUE,TRUE,int,10,8,,,,,3
-tipografias,brandbook,Brandbook,FALSE,FALSE,int,10,9,,brandbook,one,,3
-tipografia_styles,id,Id,FALSE,TRUE,int,10,1,,,,,3
-tipografia_styles,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-combinaciones,id,Id,FALSE,TRUE,int,10,1,,,,,3
-combinaciones,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-combinaciones,colores,Colores,FALSE,TRUE,varchar,200,3,,colores,many,,3
-combinaciones,orden,Orden,TRUE,TRUE,int,10,4,,,,,3
-combinaciones,brandbook,Brandbook,FALSE,FALSE,int,10,5,,brandbook,one,,3
-tipologias,id,Id,FALSE,TRUE,int,10,1,,,,,3
-tipologias,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-tipologias,tipografia,Tipografía,FALSE,TRUE,int,10,3,,tipografias,one,,3
-tipologias,min_size,Tamaño mínimo,FALSE,TRUE,int,10,4,,,,,3
-tipologias,max_size,Tamaño máximo,TRUE,TRUE,int,10,5,,,,,3
-tipologias,ideal_size,Tamaño ideal,TRUE,TRUE,int,10,6,,,,,3
-tipologias,min_lineheight,Interlineado mínimo,TRUE,TRUE,int,10,7,,,,,3
-tipologias,max_lineheight,Interlineado máximo,TRUE,TRUE,int,10,8,,,,,3
-tipologias,ideal_lineheight,Interlineado ideal,TRUE,TRUE,int,10,9,,,,,3
-tipologias,casing,Letra,TRUE,TRUE,int,10,10,,tipologia_casing,one,,3
-tipologias,tag,Tag de HTML,TRUE,TRUE,int,10,11,,tipologia_tags,one,,3
-tipologias,brandbook,Brandbook,FALSE,FALSE,int,10,12,,brandbook,one,,3
-tipologia_casing,id,Id,FALSE,TRUE,int,10,1,,,,,3
-tipologia_casing,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-tipologia_tags,id,Id,FALSE,TRUE,int,10,1,,,,,3
-tipologia_tags,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-bloques,id,Id,FALSE,TRUE,int,10,1,,,,,3
-bloques,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-bloques,contenido,Contenido,FALSE,FALSE,editor,,4,,,,,3
-bloques,titulo,Título contenido,TRUE,TRUE,varchar,200,3,,,,,3
-bloques,link,Link del botón,FALSE,TRUE,int,10,5,,links,one,,3
-bloques,boton_txt,Texto del botón,FALSE,TRUE,varchar,200,6,,,,,3
-bloques,active,Sección activa?,TRUE,TRUE,boolean,,7,1,,,,3
-bloques,orden,Orden,FALSE,TRUE,int,10,8,,,,,3
-bloques,brandbook,Brandbook,FALSE,FALSE,int,10,9,,brandbook,one,,3
-links,id,Id,FALSE,TRUE,int,10,1,,,,,3
-links,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-links,titulo,Título,TRUE,TRUE,varchar,200,3,,,,,3
-links,src,Link,TRUE,TRUE,varchar,200,4,,,,,3
-links,categoria,Categoría,TRUE,TRUE,varchar,200,5,,,,,3
-links,destacado,Destacado,TRUE,TRUE,boolean,,6,0,,,,3
-links,orden,Orden,TRUE,TRUE,varchar,200,7,,,,,3
-links,brandbook,Brandbook,FALSE,FALSE,int,10,8,,brandbook,one,,3
-usuarios,id,Id,FALSE,TRUE,int,10,1,,,,,3
-usuarios,nickname,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-usuarios,email,Email,FALSE,FALSE,varchar,200,3,,,,,3
-brandbook,id,Id,FALSE,TRUE,int,10,1,,,,,3
-brandbook,nombre,Nombre,FALSE,TRUE,varchar,200,2,,,,,3
-brandbook,active,Brandbook activo?,TRUE,TRUE,boolean,,12,1,,,,3
-brandbook,conexion,Datos de conexión,FALSE,FALSE,varchar,200,4,,,,,3
-brandbook,main_logo,Logo,TRUE,TRUE,varchar,200,5,,,,,3
-brandbook,bb_main_color,Color principal,TRUE,TRUE,varchar,200,6,,,,,3
-brandbook,bb_text_color,Color texto,TRUE,TRUE,varchar,200,7,,,,,3
-brandbook,bb_title_font,Fuente del título,TRUE,TRUE,varchar,200,8,,,,,3
-brandbook,creado,Creado en,TRUE,TRUE,datetime,,11,,,,,3
-brandbook,banner_home,Imagen Banner,TRUE,TRUE,file_image,,9,,,,,3
-brandbook,url,Banner Video,TRUE,TRUE,varchar,200,10,,,,,3
-usuarios_brandbook,id,Id,FALSE,TRUE,int,10,1,,,,,1
-usuarios_brandbook,usuario,Usuario,FALSE,TRUE,int,10,2,,usuarios,one,,1
-usuarios_brandbook,brandbook,Brandbook,FALSE,TRUE,int,10,2,,brandbook,many,,1
+projects,id,ID,FALSE,TRUE,int,10,1,,,,,1
+projects,work_name,Work Name,FALSE,TRUE,varchar,255,2,,,,,1
+projects,client,Client,FALSE,TRUE,varchar,255,3,,,,,1
+projects,agency,Agency,FALSE,TRUE,varchar,255,4,,,,,1
+projects,thumbnail,Thumbnail,FALSE,FALSE,file_image,,5,,,,,1
+projects,video_url,Video URL,FALSE,TRUE,varchar,255,6,,,,,1
+projects,editor,Editor,FALSE,TRUE,int,10,7,,editors,one,,1
+projects,featured,Show as featured work,FALSE,TRUE,boolean,,8,,,,,1
+projects,active,Display on webpage,FALSE,TRUE,boolean,,9,,,,,1
+projects,order,Order (Bigger to smaller),FALSE,TRUE,int,255,10,0,,,,1
+editors,id,ID,FALSE,TRUE,int,10,1,,,,,1
+editors,name,Name,FALSE,TRUE,varchar,255,2,,,,,1
+editors,portrait,Portrait,FALSE,FALSE,file_image,,3,,,,,1
+editors,role,Role,FALSE,TRUE,varchar,255,4,,,,,1
+editors,biography,Biography,FALSE,FALSE,html,,5,,,,,1
+editors,category,Category,TRUE,TRUE,int,10,6,1,editors_cateogries,one,,1
+editors,active,Display on webpage,FALSE,TRUE,boolean,,7,,,,,1
+editors,order,Order (Bigger to smaller),FALSE,TRUE,int,255,8,0,,,,1
+editors_cateogries,id,ID,FALSE,TRUE,int,10,1,,,,,1
+editors_cateogries,name,Name,FALSE,TRUE,varchar,255,2,,,,,1
+contact_categories,id,ID,FALSE,TRUE,int,10,1,,,,,1
+contact_categories,name,Name,FALSE,TRUE,varchar,255,2,,,,,1
+contact,id,ID,FALSE,TRUE,int,10,1,,,,,1
+contact,name,Name,FALSE,TRUE,varchar,255,2,,,,,1
+contact,email,Email,FALSE,TRUE,varchar,255,3,,,,,1
+contact,category,Category,FALSE,TRUE,int,10,4,,contact_categories,one,,1
+contact,type,Type,FALSE,TRUE,varchar,255,5,,,,,1
+consulate,id,ID,FALSE,TRUE,int,10,1,,,,,1
+consulate,location,Location,FALSE,TRUE,varchar,255,2,,,,,1
+consulate,phone,Phone number,FALSE,TRUE,varchar,255,3,,,,,1
+consulate,fax,Fax number,FALSE,TRUE,varchar,255,4,,,,,1
+consulate,instagram,Instagram link,FALSE,TRUE,varchar,255,5,,,,,1
+consulate,facebook,Facebook link,FALSE,TRUE,varchar,255,6,,,,,1
+consulate,twitter,Twitter link,FALSE,TRUE,varchar,255,7,,,,,1
+about,id,ID,FALSE,TRUE,int,10,1,,,,,1
+about,about,Text,FALSE,TRUE,html,,2,,,,,1
+about,Image,Image,FALSE,TRUE,file_image,,3,,,,,1

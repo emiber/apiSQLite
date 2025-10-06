@@ -13,6 +13,52 @@ class Data
         $this->database = new Database();
         $this->id = $id;
         $this->sysAdmin = $sysAdmin;
+
+        // $this->cleanDatabse();
+    }
+
+    private function cleanDatabse()
+    {
+        $connection = $this->database->connection;
+
+        // Eliminar tabla 'data' si existe
+        $query = "DROP TABLE IF EXISTS `data`;";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+
+        // Eliminar tabla 'users' si existe (también verifica 'usuarios')
+        $query = "DROP TABLE IF EXISTS `users`;";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+
+        $query = "DROP TABLE IF EXISTS `usuarios`;";
+        $stmt = $connection->prepare($query);
+        $stmt->execute();
+
+        // Recrear tabla 'data'
+        $sql = "CREATE TABLE data (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    tableName TEXT NOT NULL,
+                    data TEXT NOT NULL,
+                    sortOrder INTEGER NOT NULL DEFAULT 0,
+                    enabled INTEGER NOT NULL DEFAULT 1,
+                    createDateTime TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+                    updateDateTime TEXT NOT NULL DEFAULT (datetime('now', 'localtime'))
+                )";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
+
+        // Recrear tabla 'users' (usuarios)
+        $sql = "CREATE TABLE users (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    sub TEXT NOT NULL UNIQUE,
+                    enabled INTEGER NOT NULL DEFAULT 0,
+                    sysAdmin INTEGER NOT NULL DEFAULT 0,
+                    user TEXT NOT NULL,
+                    createDateTime TEXT NOT NULL DEFAULT (datetime('now', 'localtime'))
+                )";
+        $stmt = $connection->prepare($sql);
+        $stmt->execute();
     }
 
     function get()
